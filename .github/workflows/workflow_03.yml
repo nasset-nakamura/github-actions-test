@@ -1,0 +1,51 @@
+name: Output Context
+
+on:
+  push:
+    branches:
+      - workflow_03
+
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "${GITHUB_CONTEXT}"
+      - name: env
+        env:
+          ENV_CONTEXT: ${{ toJson(env) }}
+        run: echo "${ENV_CONTEXT}"
+      - name: job
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "${JOB_CONTEXT}"
+      - name: steps
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "${STEPS_CONTEXT}"
+      - name: runner
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "${RUNNER_CONTEXT}"
+      - name: secrets
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+        run: echo "${SECRETS_CONTEXT}"
+      - name: strategy
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "${STRATEGY_CONTEXT}"
+      - name: matrix
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "${MATRIX_CONTEXT}"
+      - name: needs
+        env:
+          NEEDS_CONTEXT: ${{ toJson(needs) }}
+        run: echo "${NEEDS_CONTEXT}"
+      - name: inputs
+        env:
+          INPUTS_CONTEXT: ${{ toJson(inputs) }}
+        run: echo "${INPUTS_CONTEXT}"
