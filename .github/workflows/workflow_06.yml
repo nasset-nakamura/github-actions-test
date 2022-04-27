@@ -1,0 +1,32 @@
+name: docker container
+
+on:
+  push:
+    branches:
+      - workflow_06
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18-alpine3.14 # job全体で利用するコンテナイメージ
+    steps:
+      - name: node version 1
+        run: node --version
+      - name: node version 2
+        uses: docker://node:16-alpine3.14 # 特定のstepのみコンテナイメージを変える
+        with:
+          entrypoint: "/usr/local/bin/node" #コンテナ起動時にnode -vを実行
+          args: -v
+  python:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://python:3.10.4-alpine3.15 # job全体で利用するコンテナイメージ
+    steps:
+      - name: python version 1
+        run: python3 --version
+      - name: python version 2
+        uses: docker://python:3.9.12-alpine3.15 # 特定のstepのみコンテナイメージを変える
+        with:
+          entrypoint: "python3" #コンテナ起動時にpython --versionを実行
+          args: --version
