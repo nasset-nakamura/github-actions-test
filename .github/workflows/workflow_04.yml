@@ -1,0 +1,22 @@
+name: 実行順序制御
+
+on:
+  push:
+    branches:
+      - workflow_04
+
+jobs:
+  context-and-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: job_1
+        run: echo "JOB_1"
+      - name: job_2
+        run: echo "JOB_2"
+        needs: job_3
+      - name: job_3
+        run: echo "JOB_3"
+        needs: job_1
+      - name: job_4
+        run: echo "JOB_4"
+        needs: job_2
