@@ -18,3 +18,15 @@ jobs:
         with:
           entrypoint: "/usr/local/bin/node" #コンテナ起動時にnode -vを実行
           args: -v
+  python:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://python:3.10.4-alpine3.15 # job全体で利用するコンテナイメージ
+    steps:
+      - name: python version 1
+        run: python3 --version
+      - name: python version 2
+        uses: docker://python:3.9.12-alpine3.15 # 特定のstepのみコンテナイメージを変える
+        with:
+          entrypoint: "python3" #コンテナ起動時にpython --versionを実行
+          args: --version
