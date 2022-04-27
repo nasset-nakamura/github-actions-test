@@ -15,13 +15,13 @@ jobs:
         run: echo "job_1-2"
   job_2:
     runs-on: ubuntu-latest
-    needs: jpb_3
+    needs: job_3
     steps:
       - name: job_2-1
         run: echo "job_2-1"
   job_3:
     runs-on: ubuntu-latest
-    needs: jpb_1
+    needs: job_1
     steps:
       - name: job_3-1
         run: echo "job_3-1"
