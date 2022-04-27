@@ -9,3 +9,4 @@
 | workflow_03.yml | コンテキスト、環境変数        |
 | workflow_04.yml | 実行順序制御                  |
 | workflow_05.yml | マトリックス                  |
+| workflow_06.yml | Docker コンテナ               |

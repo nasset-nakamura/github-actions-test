@@ -1,0 +1,20 @@
+name: docker container
+
+on:
+  push:
+    branches:
+      - workflow_06
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18-alpine3.14 # job全体で利用するコンテナイメージ
+    steps:
+      - name: node version 1
+        run: node --version
+      - name: node version 2
+        uses: docker://node:16-alpine3.14 # 特定のstepのみコンテナイメージを変える
+        with:
+          entrypoint: "/usr/local/bin/node" #コンテナ起動時にnode -vを実行
+          args: -v
