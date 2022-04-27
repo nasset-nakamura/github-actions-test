@@ -1,12 +1,17 @@
-name: Output Context
+name: Output Context and Env
 
 on:
   push:
     branches:
       - workflow_03
 
+env:
+  env_1: ENV_1
+  env_2: ENV_2
+  env_3: ENV_3
+
 jobs:
-  check-bats-version:
+  context-and-env:
     runs-on: ubuntu-latest
     steps:
       - name: github
@@ -49,3 +54,9 @@ jobs:
         env:
           INPUTS_CONTEXT: ${{ toJson(inputs) }}
         run: echo "${INPUTS_CONTEXT}"
+      - name: local env 1
+        env:
+          env_9: ENV_9
+        run: echo "${env_9}"
+      - name: local env 2
+        run: echo "${env_9}"
