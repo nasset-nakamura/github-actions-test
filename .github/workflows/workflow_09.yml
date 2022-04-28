@@ -1,0 +1,24 @@
+name: if
+
+on:
+  push:
+    branches:
+      - workflow_09
+
+jobs:
+  if:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: step_1
+        uses: actions/checkout@v2
+      - name: step_2
+        run: echo github.ref
+      - name: step_3
+        run: echo "BRANCH_NAME=main" >> $GITHUB_ENV
+        if: github.ref == 'refs/heads/main'
+      - name: step_4
+        run: echo "BRANCH_NAME=workflow_09" >> $GITHUB_ENV
+        if: github.ref == 'refs/heads/workflow_09'
+      - name: step_5
+        run: "branch=$BRANCH_NAME"
