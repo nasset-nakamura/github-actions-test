@@ -11,3 +11,4 @@
 | workflow_05.yml | マトリックス                  |
 | workflow_06.yml | Docker コンテナ               |
 | workflow_07.yml | Output                        |
+| workflow_08.yml | 特定文字列をマスク            |
