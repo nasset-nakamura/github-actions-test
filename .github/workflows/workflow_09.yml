@@ -13,7 +13,7 @@ jobs:
       - name: step_1
         uses: actions/checkout@v2
       - name: step_2
-        run: echo github.ref
+        run: echo $github.ref
       - name: step_3
         run: echo "BRANCH_NAME=main" >> $GITHUB_ENV
         if: github.ref == 'refs/heads/main'
@@ -21,4 +21,4 @@ jobs:
         run: echo "BRANCH_NAME=workflow_09" >> $GITHUB_ENV
         if: github.ref == 'refs/heads/workflow_09'
       - name: step_5
-        run: "branch=$BRANCH_NAME"
+        run: echo "$BRANCH_NAME"
